@@ -12,7 +12,7 @@ const zigzagConvert = (s, numRows) => {
       res[num - temp] += s[i];
     }
   }
-  return res.join(" ");
+  return res;
 };
 
 console.log(zigzagConvert("paypalishiring", 3));

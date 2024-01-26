@@ -1,18 +1,34 @@
 const validParenthesis = (str) => {
   const stack = [];
-  const map = {
-    "(": ")",
-    "{": "}",
-    "[": "]",
-  };
-  for (let i = 0; i < str.length; i++) {
-    if (stack.length > 0 && map[stack[stack.length - 1]] === str[i]) {
-      stack.pop();
-    } else {
-      stack.push(str[i]);
+  const arr = str.split("");
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === "(" || arr[i] === "{" || arr[i] === "[") {
+      stack.push(arr[i]);
+      continue;
+    }
+    if (stack.length === 0) return false;
+    console.log(stack);
+
+    let pick;
+    switch (stack[i]) {
+      case ")":
+        pick = stack.pop();
+        if (pick === "{" || pick === "[") {
+          return false;
+        }
+      case "}":
+        pick = stack.pop();
+        if (pick === "(" || pick === "[") {
+          return false;
+        }
+      case "]":
+        pick = stack.pop();
+        if (pick === "(" || pick === "{") {
+          return false;
+        }
     }
   }
-  return stack.length === 0;
+  return stack.length === 0 ? true : false;
 };
 
-console.log(validParenthesis("([])"));
+console.log(validParenthesis2("([]))"));

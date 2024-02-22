@@ -1,38 +1,36 @@
-const longestPalindromicSubstr = (s) => {
-  let res = "";
-  let resLength = 0;
-  let l = 0;
-  let r = 0;
-  for (let i = 0; i < s.length; i++) {
-    // odd length
-    l = i;
-    r = i;
+function longestPalindrome(s) {
+  if (s.length <= 1) {
+    return s;
+  }
 
-    while (l >= 0 && r < s.length && s[l] === s[r]) {
-      if (r - l + 1 > resLength) {
-        res = s.substring(l, r + 1);
-        resLength = r - l + 1;
+  let start = 0;
+  let maxLength = 1;
+
+  // Helper function to expand around the center
+  function expandAroundCenter(left, right) {
+    while (left >= 0 && right < s.length && s[left] === s[right]) {
+      const currentLength = right - left + 1;
+      if (currentLength > maxLength) {
+        maxLength = currentLength;
+        start = left;
       }
-      l -= 1;
-      r += 1;
-    }
-
-    // even length
-
-    l = i;
-    r = i + 1;
-
-    while (l >= 0 && r < s.length && s[l] === s[r]) {
-      if (r - l + 1 > resLength) {
-        res = s.substring(l, r + 1);
-        resLength = r - l + 1;
-      }
-      l -= 1;
-      r += 1;
+      left--;
+      right++;
     }
   }
-  return res;
-};
 
-console.log(longestPalindromicSubstr("babad"));
-console.log(longestPalindromicSubstr("cbbd"));
+  for (let i = 0; i < s.length; i++) {
+    // Expand around center for odd length palindrome
+    expandAroundCenter(i, i);
+
+    // Expand around center for even length palindrome
+    expandAroundCenter(i, i + 1);
+  }
+
+  return s.substring(start, start + maxLength);
+}
+
+// Example usage
+const inputString = "babad";
+const result = longestPalindrome(inputString);
+console.log(result); // Output: "bab" or "aba"

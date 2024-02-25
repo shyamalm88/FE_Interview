@@ -1,11 +1,13 @@
-const containerWithMostWater = (height) => {
+const containerWithMostWater = (arr) => {
   let left = 0;
-  let right = height.length - 1;
+  let right = arr.length - 1;
   let max = 0;
   while (left < right) {
-    const minArea = Math.min(height[left], height[right]) * (right - 1);
-    max = Math.max(max, minArea);
-    if (height[left] < height[right]) {
+    let area = (right - left) * Math.min(arr[left], arr[right]);
+    if (area > max) {
+      max = area;
+    }
+    if (arr[left] < arr[right]) {
       left++;
     } else {
       right--;
@@ -14,4 +16,5 @@ const containerWithMostWater = (height) => {
   return max;
 };
 
-console.log(containerWithMostWater([3, 1, 2, 4, 5]));
+const arr = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+console.log(containerWithMostWater(arr));

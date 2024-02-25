@@ -1,18 +1,17 @@
-const removeDuplicatesFromSortedArray = (arr) => {
-  let start = 0;
-
-  for (let i = 0; i < arr.length - 1; i++) {
-    if (arr[i] !== arr[i + 1]) {
-      arr[start] = arr[i];
-      start++;
+const removeDuplicates = (arr) => {
+  let i = 0;
+  for (let j = 0; j < arr.length; j++) {
+    if (arr[j] != arr[j + 1]) {
+      arr[i] = arr[j];
+      i++;
     }
   }
-  arr[start] = arr[arr.length - 1];
-  return arr.splice(0, start + 1);
+  return arr.splice(0, i);
 };
 
-console.log(
-  removeDuplicatesFromSortedArray([
-    1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 22,
-  ])
-);
+const arr = [
+  1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 9, 9,
+  9,
+];
+
+console.log(removeDuplicates(arr));

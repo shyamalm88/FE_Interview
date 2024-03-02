@@ -1,20 +1,22 @@
 const combinationSum = (arr, target) => {
-  const res = [];
-  const length = arr.length;
-  dfs(arr, res, [], 0, length, target);
+  let res = [];
+
+  dfs(arr, 0, [], res, target);
   return res;
 };
 
-const dfs = (arr, res, stack, index, length, target) => {
-  if (target < 0) return;
-  if (target == 0) return res.push(stack);
-  arr.sort((a, b) => a - b);
-  for (let i = index; i < length; i++) {
-    if (arr[i] > target) break;
-    let temp = Array.from(stack);
-    temp.push(arr[i]);
-    dfs(arr, res, temp, i, length, target - arr[i]);
+const dfs = (arr, index, current, res, target) => {
+  if (target == 0) {
+    res.push([...current]);
+    return;
+  }
+  for (let i = index; i < arr.length; i++) {
+    if (arr[i] <= target) {
+      current.push(arr[i]);
+      dfs(arr, i, current, res, target - arr[i]);
+      current.pop();
+    }
   }
 };
 
-console.log(combinationSum([2, 3, 5], 8));
+console.log(combinationSum([2, 3, 4, 7], 7));

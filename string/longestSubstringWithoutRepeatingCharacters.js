@@ -9,19 +9,19 @@
 // Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
 const lengthOfLongestSubstring = (s) => {
-  let map = {};
-  let start = 0;
+  let set = new Set();
+  let left = 0;
   let max = 0;
   let len = s.length;
 
   for (let i = 0; i < len; i++) {
-    if (map[s[i]] !== undefined) {
-      start = Math.max(start, map[s[i]] + 1);
+    while (set.has(str[i])) {
+      set.delete(str[l]);
+      left++;
+      set.add(str[i]);
+      max = Math.max(max, i - left + 1);
     }
-    map[s[i]] = i;
-    max = Math.max(max, i - start + 1);
   }
-  console.log(max);
   return max;
 };
 

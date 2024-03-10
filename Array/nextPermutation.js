@@ -1,18 +1,23 @@
 const nextPermutation = (arr) => {
-  let length = arr.length;
-  let i = length - 2;
-  let j = length - 1;
-  while (i >= 0 && arr[i] >= arr[i + 1]) i--;
-
-  if (i >= 0) {
-    while (j > i && arr[j] <= arr[i]) {
-      j--;
+  let index = -1;
+  let l = arr.length;
+  for (let i = l - 2; i >= 0; i--) {
+    if (arr[i] < arr[i + 1]) {
+      index = i;
+      break;
     }
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-    reverse(arr, i + 1, length - 1);
-  } else {
-    reverse(arr, 0, length - 1);
   }
+  if (index === -1) {
+    reverse(arr, 0, arr.length - 1);
+    return arr;
+  }
+  for (let i = l - 1; i >= index; i--) {
+    if (arr[i] > arr[index]) {
+      [arr[i], arr[index]] = [arr[index], arr[i]];
+      break;
+    }
+  }
+  reverse(arr, index + 1, arr.length - 1);
   return arr;
 };
 
@@ -24,4 +29,4 @@ const reverse = (arr, left, right) => {
   }
 };
 
-console.log(nextPermutation([3, 1, 2]));
+console.log(nextPermutation([3, 1, 2, 4]));

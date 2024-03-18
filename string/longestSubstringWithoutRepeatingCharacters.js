@@ -8,21 +8,22 @@
 
 // Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-const lengthOfLongestSubstring = (s) => {
+const lengthOfLongestSubstring = (str) => {
   let set = new Set();
   let left = 0;
   let max = 0;
-  let len = s.length;
+  let len = str.length;
 
   for (let i = 0; i < len; i++) {
     while (set.has(str[i])) {
-      set.delete(str[l]);
+      console.log(set);
+      set.delete(str[left]);
       left++;
-      set.add(str[i]);
-      max = Math.max(max, i - left + 1);
     }
+    set.add(str[i]);
+    max = Math.max(max, i - left + 1);
   }
   return max;
 };
 
-lengthOfLongestSubstring("pwwkew");
+console.log(lengthOfLongestSubstring("pwwkew"));

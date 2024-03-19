@@ -1,19 +1,9 @@
-const maxDepthOfBinaryTree = (root) => {
-  if (root == null) {
-    return 0;
-  }
-  if (root.left === null && root.right === null) {
-    return 1;
-  }
-
-  let left = maxDepthOfBinaryTree(root.left);
-  let right = maxDepthOfBinaryTree(root.right);
-
-  if (left > right) {
-    return left + 1;
-  } else {
-    return right + 1;
-  }
+const maxHeightBinaryTree = (node) => {
+  if (node == null) return 0;
+  let left = maxHeightBinaryTree(node.left) + 1;
+  let right = maxHeightBinaryTree(node.right) + 1;
+  let ans = Math.max(left, right);
+  return ans;
 };
 
 class Node {
@@ -31,4 +21,4 @@ root.right = new Node(3);
 root.left.left = new Node(4);
 root.left.right = new Node(5);
 
-console.log("Height of tree is : " + maxDepthOfBinaryTree(root));
+console.log("Height of tree is : " + maxHeightBinaryTree(root));

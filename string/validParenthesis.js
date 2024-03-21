@@ -7,7 +7,6 @@ const validParenthesis = (str) => {
       continue;
     }
     if (stack.length === 0) return false;
-    console.log(stack);
 
     let pick;
     switch (stack[i]) {

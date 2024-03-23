@@ -1,22 +1,22 @@
 const combinationSum = (arr, target) => {
-  let ans = [];
-  print(arr, 0, target, ans, []);
-  return ans;
+  let res = [];
+
+  dfs(arr, 0, [], res, target);
+  return res;
 };
 
-const print = (arr, index, target, ans, ds) => {
-  if (index === arr.length) {
-    if (target == 0) {
-      ans.push([...ds]);
-    }
+const dfs = (arr, index, current, res, target) => {
+  if (target == 0) {
+    res.push([...current]);
     return;
   }
-  if (arr[index] <= target) {
-    ds.push(arr[index]);
-    print(arr, index + 1, target - arr[index], ans, ds);
-    ds.pop();
+  for (let i = index; i < arr.length; i++) {
+    if (arr[i] <= target) {
+      current.push(arr[i]);
+      dfs(arr, i, current, res, target - arr[i]);
+      current.pop();
+    }
   }
-  print(arr, index + 1, target, ans, ds);
 };
 
-console.log(combinationSum([1, 2, 3, 4, 5, 6, 7], 7));
+console.log(combinationSum([2, 3, 4, 7], 7));

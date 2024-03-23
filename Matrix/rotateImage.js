@@ -13,5 +13,6 @@ const rotateImage = (matrix) => {
   for (let i = 0; i < n; i++) {
     matrix[i].reverse();
   }
+  console.log(matrix);
   return matrix;
 };

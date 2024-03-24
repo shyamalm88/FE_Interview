@@ -19,3 +19,5 @@ const firstMissingPositive = function (arr) {
   // other wise the minimum positive array will be the arr.length + 1 value
   return arr.length + 1;
 };
+
+console.log(firstMissingPositive([1, 2, 4, 3, 5, 7, 6, 8, 9]));

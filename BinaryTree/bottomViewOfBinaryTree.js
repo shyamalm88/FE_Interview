@@ -12,7 +12,7 @@ const bottomViewOfBinaryTree = (root) => {
       queue.push({ node: node.left, hd: hd - 1 });
     }
     if (node.right) {
-      queue.push({ node: node.right, hd: hd - 1 });
+      queue.push({ node: node.right, hd: hd + 1 });
     }
   }
   let res = [];

@@ -7,18 +7,18 @@
 // "pwke" is a subsequence and not a substring.
 
 const lengthOfLongestSubstring = (str) => {
-  let set = new Set();
+  let map = new Map();
   let left = 0;
   let max = 0;
   let len = str.length;
 
   for (let i = 0; i < len; i++) {
-    while (set.has(str[i])) {
-      console.log(set);
-      set.delete(str[left]);
+    while (map.has(str[i])) {
+      console.log(map);
+      map.delete(str[left]);
       left++;
     }
-    set.add(str[i]);
+    map.set(str[i]);
     max = Math.max(max, i - left + 1);
   }
   return max;

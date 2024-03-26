@@ -1,0 +1,17 @@
+.treeNode {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  cursor: pointer;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-collapse: collapse;
+}
+
+.treeNode .treeNode {
+  border-right: 0px;
+}
+
+.explorerWrapper {
+  max-width: 400px;
+}

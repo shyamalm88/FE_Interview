@@ -18,4 +18,4 @@ const quickSelect = (arr, l, r, k) => {
   if (p < k) return quickSelect(arr, p + 1, r, k);
   else return arr[p];
 };
-console.log(kthLargestElement([5, 4, 3, 6, 4, 3, 2, 1], 2));
+console.log(kthLargestElement([5, 4, 3, 6, 4, 3, 2, 1], 4));

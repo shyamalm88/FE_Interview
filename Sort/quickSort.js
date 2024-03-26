@@ -4,13 +4,13 @@ const quickSort = (arr, l, h) => {
   }
   if (l < h) {
     let j = partition(arr, l, h);
-    quickSort(arr, j + 1, h);
     quickSort(arr, l, j - 1);
+    quickSort(arr, j + 1, h);
   }
   return arr;
 };
 
-let partition = (arr, l, h) => {
+const partition = (arr, l, h) => {
   let pivot = arr[h];
   let i = l - 1;
   for (let j = l; j <= h - 1; j++) {

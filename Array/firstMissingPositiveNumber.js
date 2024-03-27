@@ -20,4 +20,4 @@ const firstMissingPositive = function (arr) {
   return arr.length + 1;
 };
 
-console.log(firstMissingPositive([1, 2, 4, 3, 5, 7, 6, 8, 9]));
+console.log(firstMissingPositive([1, 2, 4, 3, 5, 7, 6, 9]));

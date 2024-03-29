@@ -12,7 +12,7 @@ function Products() {
     try {
       const res = await fetch(
         `https://dummyjson.com/products?limit=${limit}&skip=${Math.abs(
-          pageNum
+          (pageNum - 1) * limit
         )}`
       );
       const data = await res.json();
@@ -35,7 +35,7 @@ function Products() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           if (hasMore) {
-            pageNum.current = pageNum.current - 1 * limit;
+            pageNum.current = pageNum.current + 1;
             fetchData(pageNum.current);
           }
         }

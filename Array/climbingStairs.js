@@ -12,5 +12,5 @@ const climbingStairs = (n, dp) => {
   }
 };
 
-const n = 3;
+const n = 5;
 console.log(climbingStairs(n, Array(n + 1)));

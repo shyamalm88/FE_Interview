@@ -5,6 +5,10 @@ import { TreeView } from "./Components/treeView";
 import UserSeachList from "./Components/user.list";
 import { explorerData as data } from "../src/data/data";
 import Products from "./Components/Products";
+import { useEffect, useState } from "react";
+import TodoWithRedux from "./Components/TodoWithRedux";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 function App() {
   return (
@@ -14,7 +18,10 @@ function App() {
       {/* <CounterWithUseReducer /> */}
       {/* <br /> */}
       {/* <TreeView data={data} /> */}
-      <Products />
+      {/* <Products /> */}
+      <Provider store={store}>
+        <TodoWithRedux />
+      </Provider>
     </div>
   );
 }

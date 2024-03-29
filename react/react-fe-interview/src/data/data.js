@@ -74,4 +74,11 @@ export const explorerData = [
     isLeaf: true,
     id: 10,
   },
+  {
+    name: "package.lock.json",
+    type: "folder",
+    isLeaf: false,
+    id: 11,
+    children: [],
+  },
 ];

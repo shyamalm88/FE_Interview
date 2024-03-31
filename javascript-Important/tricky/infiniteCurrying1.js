@@ -3,11 +3,12 @@ let sum = function (a) {
     if (b) {
       return sum(a + b);
     }
-    return typeof a === "function" ? a() : a;
+    return a;
   };
 };
 
-console.log(sum(5)(4)(3)(2)() === 14);
+console.log(sum(5)(4)(3)(2)());
+console.log(sum(5, 3)());
 
 const curriedSum = function (...args) {
   const allArgs = [...args];

@@ -2,8 +2,8 @@ const Singleton = (function () {
   let instance;
 
   function createInstance() {
-    const object = new Object("I am the instance");
-    return object;
+    (this.name = "Singleton"), (this.random = Math.random());
+    return { name: this.name, random: this.random };
   }
 
   return {
@@ -19,4 +19,6 @@ const Singleton = (function () {
 const object1 = Singleton.getInstance();
 const object2 = Singleton.getInstance();
 
+console.log(object1);
+console.log(object2);
 console.log(object1 === object2);

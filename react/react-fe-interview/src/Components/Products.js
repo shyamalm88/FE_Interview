@@ -1,71 +1,91 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 const limit = 10;
 function Products() {
   const [data, setData] = useState([]);
-  const [dataLimit, setDataLimit] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
-  const pageNum = useRef(1);
+  const [loading, setLoading] = useState(false);
+  const [total, setTotal] = useState(0);
+  const [error, setError] = useState(false);
 
-  const observerRef = useRef();
+  const [skip, setSkip] = useState(0);
 
-  const fetchData = async (pageNum = 1) => {
+  const fetchDataToRender = async (limit, skip) => {
+    setLoading(true);
+    setError(false);
     try {
-      const res = await fetch(
-        `https://dummyjson.com/products?limit=${limit}&skip=${Math.abs(
-          (pageNum - 1) * limit
-        )}`
+      let data = await fetch(
+        `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
       );
-      const data = await res.json();
-      setData((prev) => [...prev, ...data.products]);
-      setDataLimit(data.total);
+      let resp = await data.json();
+      setTotal(resp.total);
+      setSkip((prev) => prev + limit);
+      setData((prev) => [...prev, ...resp.products]);
+      setLoading(false);
     } catch (err) {
-      console.log(err);
-    } finally {
+      setLoading(false);
+      setError(true);
     }
   };
 
-  useEffect(() => {
-    if (Math.abs(pageNum.current) >= dataLimit) {
-      setHasMore(false);
-    }
-  }, [data, dataLimit]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (hasMore) {
-            pageNum.current = pageNum.current + 1;
-            fetchData(pageNum.current);
+  const observer = useRef(null);
+  const lastItemObserver = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+      observer.current = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            fetchDataToRender(limit, skip);
           }
-        }
+        });
       });
-    });
-    observer.observe(observerRef.current);
-  }, [observerRef, hasMore]);
+      if (node) {
+        observer.current.observe(node);
+      }
+    },
+    [loading]
+  );
 
   useEffect(() => {
-    fetchData(1);
+    fetchDataToRender(limit, skip);
   }, []);
+
+  useEffect(() => {
+    if (skip >= total) {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    } else {
+    }
+  }, [data]);
+
+  useEffect(() => {
+    console.log(skip);
+  }, [skip]);
 
   return (
     <>
       <div className="cardWrapper">
-        {data.map((item) => {
-          return (
-            <div key={item.id} className="card">
-              <h2>{item.title}</h2>
-              <img src={item.thumbnail} />
-              <small>{item.description}</small>
-            </div>
-          );
+        {data.map((item, index) => {
+          if (data.length === index + 1) {
+            return (
+              <div key={item.id} className="card" ref={lastItemObserver}>
+                <h2>{item.title}</h2>
+                <img src={item.thumbnail} alt={item.title} />
+                <small>{item.description}</small>
+              </div>
+            );
+          } else {
+            return (
+              <div key={item.id} className="card">
+                <h2>{item.title}</h2>
+                <img src={item.thumbnail} alt={item.title} />
+                <small>{item.description}</small>
+              </div>
+            );
+          }
         })}
-      </div>
-      <div
-        ref={observerRef}
-        style={{ textAlign: "center", marginBottom: "10px" }}
-      >
-        Loading...
       </div>
     </>
   );

@@ -18,10 +18,10 @@ function App() {
       {/* <CounterWithUseReducer /> */}
       {/* <br /> */}
       {/* <TreeView data={data} /> */}
-      {/* <Products /> */}
-      <Provider store={store}>
+      <Products />
+      {/* <Provider store={store}>
         <TodoWithRedux />
-      </Provider>
+      </Provider> */}
     </div>
   );
 }

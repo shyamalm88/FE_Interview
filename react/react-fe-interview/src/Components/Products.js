@@ -56,7 +56,6 @@ function Products() {
       if (observer.current) {
         observer.current.disconnect();
       }
-    } else {
     }
   }, [data]);
 

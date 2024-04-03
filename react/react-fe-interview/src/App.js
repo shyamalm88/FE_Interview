@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import TodoWithRedux from "./Components/TodoWithRedux";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import DebounceProductsSearch from "./Components/debounceProductsSearch";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       {/* <CounterWithUseReducer /> */}
       {/* <br /> */}
       {/* <TreeView data={data} /> */}
-      <Products />
+      {/* <Products /> */}
+      <DebounceProductsSearch />
       {/* <Provider store={store}>
         <TodoWithRedux />
       </Provider> */}

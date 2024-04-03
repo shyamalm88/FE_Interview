@@ -9,7 +9,7 @@ const myPromiseAll = function (promises) {
             resolve(result);
           }
         })
-        .catch((err) => [reject(error)]);
+        .catch((err) => [reject(err)]);
     });
   });
 };

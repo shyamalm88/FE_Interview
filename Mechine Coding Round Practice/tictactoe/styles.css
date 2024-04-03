@@ -1,97 +1,37 @@
 .wrapper {
   display: grid;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-content: center;
   grid-template-columns: repeat(3, auto);
-  justify-items: center;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 .box {
-  border: 1px solid #000;
+  border: 1px solid #333;
   height: 100px;
   width: 100px;
-  align-items: center;
+  position: relative;
+  display: flex;
+}
+
+.box.circle:before {
+  content: "O";
+  text-align: center;
   justify-content: center;
   display: flex;
-  position: relative;
-  cursor: pointer;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin: auto;
 }
 
-.box:first-child,
-.box:nth-child(2),
-.box:nth-child(3) {
-  border-top: none;
-}
-
-.box:nth-child(3n + 1) {
-  border-left: none;
-}
-.box:nth-child(3n + 3) {
-  border-right: none;
-}
-
-.box:last-child,
-.box:nth-child(8),
-.box:nth-child(7) {
-  border-bottom: none;
-}
-
-.box.x::before,
-.box.x::after,
-.box.o::before,
-.box.o::after {
-  background-color: black;
-}
-
-.wrapper.x .box:not(.x):not(.o):hover::after,
-.wrapper.x .box:not(.x):not(.o):hover::before,
-.wrapper.o .box:not(.x):not(.o):hover::after,
-.wrapper.o .box:not(.x):not(.o):hover::before {
-  background-color: lightgrey;
-}
-
-.box.x::before,
-.box.x::after,
-.wrapper.x .box:not(.x):not(.o):hover::before,
-.wrapper.x .box:not(.x):not(.o):hover::after {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 100px;
-}
-
-.box.x::before,
-.wrapper.x .box:not(.x):not(.o):hover::before {
-  transform: rotate(45deg);
-}
-.box.x::after,
-.wrapper.x .box:not(.x):not(.o):hover::after {
-  transform: rotate(-45deg);
-}
-
-.box.o::before,
-.box.o::after,
-.wrapper.o .box:not(.x):not(.o):hover::after,
-.wrapper.o .box:not(.x):not(.o):hover::before {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-}
-
-.box.o::before,
-.wrapper.o .box:not(.x):not(.o):hover::before {
-  width: 90px;
-  height: 90px;
-}
-.box.o::after,
-.wrapper.o .box:not(.x):not(.o):hover::after {
-  width: 60px;
-  height: 60px;
-  background-color: white;
-}
-
-.box.o,
-.box.x {
-  cursor: not-allowed;
+.box.cross:before {
+  content: "X";
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin: auto;
 }

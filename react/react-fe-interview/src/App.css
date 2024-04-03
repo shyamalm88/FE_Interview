@@ -56,3 +56,30 @@
   width: 100%;
   height: 120px;
 }
+
+.suggesstionsWrapper {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.suggesstions {
+  display: flex;
+  justify-content: left;
+  text-align: left;
+  border: 1px solid #ccc;
+  width: 300px;
+}
+img {
+  display: flex;
+  max-height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+}

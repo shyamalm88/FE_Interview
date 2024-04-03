@@ -1,25 +1,33 @@
-const myPromiseAllSettled = function (promises) {
+const myPromiseAllSettled = (promises) => {
+  let res = [];
   let counter = 0;
-  const results = new Array(promises.length);
   return new Promise((resolve, reject) => {
-    promises.forEach((elem, i) => {
-      elem
-        .resolve()
-        .then((res) => {
-          results[i] = {
-            status: "fulfilled",
-            value: res,
-          };
+    promises.forEach((element, i) => {
+      Promise.resolve(element)
+        .then((resp) => {
+          res[i] = { status: "fulfilled", value: resp };
         })
         .catch((err) => {
-          results[i] = { status: "rejected", err };
+          res[i] = { status: "rejected", value: err };
         })
         .finally(() => {
           counter++;
           if (counter === promises.length - 1) {
-            resolve(results);
+            resolve(res);
           }
         });
     });
   });
 };
+
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 500, "one");
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(reject, 100, "two");
+});
+
+myPromiseAllSettled([promise1, promise2]).then((val) => {
+  console.log(val);
+});

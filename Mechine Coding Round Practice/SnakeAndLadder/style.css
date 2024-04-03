@@ -4,10 +4,10 @@ body {
   text-align: center;
 }
 
-.main-board {
+/* .main-board {
   background: url(https://s-media-cache-ak0.pinimg.com/originals/03/c3/ab/03c3ab693eedcd84c1119a947974cb93.jpg)
     no-repeat;
-}
+} */
 
 img {
   width: 100px;
@@ -72,8 +72,8 @@ button {
   padding: 0%;
   text-align: center;
   height: 96px;
-  font-size: 0px;
-  border: 0px solid black;
+  font-size: 20px;
+  border: 1px solid black;
 }
 .row {
   display: flex;

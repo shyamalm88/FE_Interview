@@ -22,7 +22,7 @@ function startGame() {
   cellElements.forEach((cell) => {
     cell.addEventListener("click", handleClick, { once: true });
   });
-  setBoardHoverClass();
+  // setBoardHoverClass();
 }
 
 function checkForWin(currentClass) {
@@ -48,12 +48,12 @@ function handleClick(e) {
   placeMark(cell, currentClass);
   //place the mark
   if (checkForWin(currentClass)) {
-    console.log(`${currentClass} is the winner`);
+    alert(`${currentClass} is the winner`);
   } else if (isDraw()) {
-    console.log("draw");
+    alert("draw");
   } else {
     switchTurns();
-    setBoardHoverClass();
+    // setBoardHoverClass();
   }
   //check for win
   //check for draw
@@ -68,12 +68,12 @@ function switchTurns() {
   circleTurn = !circleTurn;
 }
 
-function setBoardHoverClass() {
-  boardElement.classList.remove(x_class);
-  boardElement.classList.remove(circle_class);
-  if (circleTurn) {
-    boardElement.classList.add(circle_class);
-  } else {
-    boardElement.classList.add(x_class);
-  }
-}
+// function setBoardHoverClass() {
+//   boardElement.classList.remove(x_class);
+//   boardElement.classList.remove(circle_class);
+//   if (circleTurn) {
+//     boardElement.classList.add(circle_class);
+//   } else {
+//     boardElement.classList.add(x_class);
+//   }
+// }

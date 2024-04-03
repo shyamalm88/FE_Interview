@@ -33,21 +33,21 @@ const SNAKE_CLASS = "snake";
 function createMatrix() {
   let block = n * n + 1;
   for (let column = 1; column <= n; column++) {
-    let rows = [];
+    let res = [];
     if (column % 2 === 0) {
       block = block - n;
       let value = block;
       for (let row = 1; row <= n; row++) {
-        rows.push(value);
+        res.push(value);
         value++;
       }
     } else {
       for (let row = 1; row <= n; row++) {
         block = block - 1;
-        rows.push(block);
+        res.push(block);
       }
     }
-    matrixArray.push(rows);
+    matrixArray.push(res);
   }
   createBoard(matrixArray);
 }

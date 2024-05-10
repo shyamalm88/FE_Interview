@@ -8,7 +8,7 @@ const spiralMatrix = (matrix) => {
   let bottom = n - 1;
 
   while (left <= right && top <= bottom) {
-    for (let i = left; i < right; i++) {
+    for (let i = left; i <= right; i++) {
       res.push(matrix[top][i]);
     }
     for (let i = top + 1; i <= bottom; i++) {

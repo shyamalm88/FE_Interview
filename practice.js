@@ -1,42 +1,33 @@
-const spiralMatrix = (arr) => {
-  let n = arr.length;
-  let m = arr[0].length;
-  let res = [];
-  let left = 0;
-  let right = m - 1;
-  let top = 0;
-  let bottom = n - 1;
-
-  while (left <= right && top <= bottom) {
-    for (let i = left; i <= right; i++) {
-      res.push(arr[top][i]);
-    }
-    for (let i = top + 1; i <= bottom; i++) {
-      res.push(arr[i][right]);
-    }
-    if (left < right && top < bottom) {
-      for (let i = right - 1; i > top; i--) {
-        res.push(arr[bottom][i]);
-      }
-      for (let i = bottom; i > left; i--) {
-        res.push(arr[i][top]);
-      }
-    }
-
-    left++;
-    right--;
-    top++;
-    bottom--;
+const quickSort = (arr, l, h) => {
+  if (arr.length < 2) {
+    return arr;
   }
-
-  return res;
+  if (l < h) {
+    let j = partition(arr, l, h);
+    quickSort(arr, l, j - 1);
+    quickSort(arr, j + 1, h);
+  }
+  return arr;
 };
 
-console.log(
-  spiralMatrix([
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, 16],
-  ])
-);
+const partition = (arr, l, h) => {
+  const pivot = arr[h];
+  let i = l - 1;
+  for (let j = l; j <= h - 1; j++) {
+    if (arr[j] <= pivot) {
+      i++;
+      swap(arr, i, j);
+    }
+  }
+  swap(arr, i + 1, h);
+  return i + 1;
+};
+
+const swap = (arr, i, j) => {
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+};
+
+const arr = [9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+console.log(quickSort(arr, 0, arr.length - 1));

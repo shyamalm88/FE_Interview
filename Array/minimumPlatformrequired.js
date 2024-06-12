@@ -6,8 +6,8 @@ const minimumPlatformRequired = (intervals) => {
     return b - d;
   });
   let platformRequired = 1;
-  let i = 1;
-  j = 0;
+  let i = 1,
+    j = 0;
   let max = 1;
 
   while (i < intervals.length - 1 && j < intervals.length - 1) {

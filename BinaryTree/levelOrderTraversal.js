@@ -1,19 +1,15 @@
 const levelOrderTraversal = (node) => {
-  if (node == null) {
-    return [];
+  return helper([], root, 0);
+};
+
+var helper = function (res, root, level) {
+  if (root) {
+    if (!res[level]) res[level] = [];
+    res[level].push(root.val);
+    helper(res, root.left, level + 1);
+    helper(res, root.right, level + 1);
   }
-  let q = [node];
-  let ans = [];
-  while (q.length) {
-    const size = q.length;
-    for (let i = 0; i < size; i++) {
-      let peak = q.shift();
-      ans.push(peak.val);
-      if (peak.left) q.push(peak.left);
-      if (peak.right) q.push(peak.right);
-    }
-  }
-  return ans;
+  return res;
 };
 
 class Node {

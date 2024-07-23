@@ -1,39 +1,30 @@
 const zigZagTraversal = (node) => {
-  if (node == null) {
-    return [];
-  }
-  let flag = 1;
-  let q = [node];
-  let ans = [node.data];
+  if (!root) return [];
+  return helper([[root]], 0);
+};
 
-  while (q.length > 0) {
-    let n = q.length;
-    for (let i = 0; i < n; i++) {
-      if (flag != 0) {
-        temp = q.shift();
-        if (temp.right) {
-          q.push(temp.right);
-          ans.push(temp.right.data);
-        }
-        if (temp.left) {
-          q.push(temp.left);
-          ans.push(temp.left.data);
-        }
-      } else if (flag == 0) {
-        temp = q.pop();
-        if (temp.left) {
-          q.unshift(temp.left);
-          ans.push(temp.left.data);
-        }
-        if (temp.right) {
-          q.unshift(temp.right);
-          ans.push(temp.right.data);
-        }
-      }
+var helper = function (res, level) {
+  var now = res[level];
+  var next = [];
+
+  for (var i = now.length - 1; i >= 0; i--) {
+    if (level % 2) {
+      if (now[i].left) next.push(now[i].left);
+      if (now[i].right) next.push(now[i].right);
+    } else {
+      if (now[i].right) next.push(now[i].right);
+      if (now[i].left) next.push(now[i].left);
     }
-    flag = !flag;
+
+    now[i] = now[i].val;
   }
-  return ans;
+
+  if (next.length) {
+    res.push(next);
+    helper(res, level + 1);
+  }
+
+  return res;
 };
 
 class Node {

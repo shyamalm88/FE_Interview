@@ -36,7 +36,7 @@ const triggerCounterfn = function () {
   triggerCounter.innerHTML = triggerCount++;
 };
 
-// const debouncedTriggerCounter = debounce(triggerCounterfn, 800);
+const debouncedTriggerCounter = debounce(triggerCounterfn, 800);
 const throttledTriggerCounter = throttle(triggerCounterfn, 800);
 
 btn.addEventListener("click", function () {

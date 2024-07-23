@@ -1,3 +1,15 @@
+const removeCycle = (head) => {
+  let slow = head;
+  let fast = head;
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (fast === slow) {
+      removeCycleNode(head, fast);
+    }
+  }
+};
+
 const removeCycleNode = (head, node) => {
   let pr1 = head;
   let pr2 = node;
@@ -9,17 +21,6 @@ const removeCycleNode = (head, node) => {
     pr1 = pr1.next;
   }
   pr1.next = null;
-};
-const removeCycle = (head) => {
-  let slow = head;
-  let fast = head;
-  while (fast && fast.next) {
-    slow = slow.next;
-    fast = fast.next.next;
-    if (fast === slow) {
-      removeCycleNode(head, fast);
-    }
-  }
 };
 
 class Node {

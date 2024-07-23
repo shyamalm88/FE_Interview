@@ -1,16 +1,12 @@
 const rightViewOfBinaryTree = (root) => {
-  const res = [];
-  rightViewUtil(root, res, 0);
-  return res;
+  var result = [];
+  helper(root, 0, result);
+  return result;
 };
 
-const rightViewUtil = (node, res, level) => {
-  if (node == null) {
-    return;
-  }
-  if (level == res.length) {
-    res.push(node.val);
-  }
-  rightViewUtil(node.left, res, level + 1);
-  rightViewUtil(node.right, res, level + 1);
+var helper = function (node, level, result) {
+  if (!node) return;
+  result[level] = node.val;
+  helper(node.left, level + 1, result);
+  helper(node.right, level + 1, result);
 };

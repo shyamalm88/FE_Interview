@@ -10,6 +10,7 @@ import TodoWithRedux from "./Components/TodoWithRedux";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import DebounceProductsSearch from "./Components/debounceProductsSearch";
+import Stopwatch from "./Components/StopWatch";
 
 function App() {
   return (
@@ -20,10 +21,11 @@ function App() {
       {/* <br /> */}
       {/* <TreeView data={data} /> */}
       {/* <Products /> */}
-      <DebounceProductsSearch />
+      {/* <DebounceProductsSearch /> */}
       {/* <Provider store={store}>
         <TodoWithRedux />
       </Provider> */}
+      <Stopwatch />
     </div>
   );
 }

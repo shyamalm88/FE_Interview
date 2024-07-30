@@ -1,4 +1,4 @@
-const zigZagTraversal = (node) => {
+const zigZagTraversal = (root) => {
   if (!root) return [];
   return helper([[root]], 0);
 };

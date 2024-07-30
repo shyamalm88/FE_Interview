@@ -1,4 +1,4 @@
-const levelOrderTraversal = (node) => {
+const levelOrderTraversal = (root) => {
   return helper([], root, 0);
 };
 

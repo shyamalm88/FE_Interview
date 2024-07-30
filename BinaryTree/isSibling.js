@@ -3,9 +3,9 @@ const isSibling = (node, a, b) => {
     return false;
   }
 
-  if (root.left !== null && root.right !== null) {
-    let left = root.left.data;
-    let right = root.right.data;
+  if (node.left !== null && node.right !== null) {
+    let left = node.left.data;
+    let right = node.right.data;
     if (left === a && right === b) {
       return true;
     }
@@ -13,12 +13,12 @@ const isSibling = (node, a, b) => {
       return true;
     }
   }
-  if (root.left == null) {
-    return isSibling(root.right, a, b);
+  if (node.left == null) {
+    return isSibling(node.right, a, b);
   }
 
-  if (root.right == null) {
-    return isSibling(root.left, a, b);
+  if (node.right == null) {
+    return isSibling(node.left, a, b);
   }
 
   return true;

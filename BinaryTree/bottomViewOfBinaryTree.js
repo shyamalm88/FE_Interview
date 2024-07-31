@@ -16,8 +16,23 @@ const bottomViewOfBinaryTree = (root) => {
     }
   }
   let res = [];
-  for (cost[hd] of map.entries().sort()) {
-    res.push(map.get(hd));
+  for (const [key, value] of map) {
+    res.push(value);
   }
   return res;
 };
+
+class TreeNode {
+  constructor(value) {
+    this.val = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+const tree = new TreeNode(1);
+tree.left = new TreeNode(2);
+tree.right = new TreeNode(3);
+tree.left.left = new TreeNode(4);
+tree.left.right = new TreeNode(5);
+console.log("bottom view", bottomViewOfBinaryTree(tree));

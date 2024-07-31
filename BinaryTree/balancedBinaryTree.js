@@ -5,28 +5,20 @@ class TreeNode {
     this.right = null;
   }
 }
-function getHeight(node) {
-  if (node === null) {
-    return 0;
-  }
-  const leftHeight = getHeight(node.left);
-  const rightHeight = getHeight(node.right);
+var getHeight = function (root) {
+  if (root == null) return 0;
+  let leftHeight = getHeight(root.left);
+  let rightHeight = getHeight(root.right);
+  if (leftHeight == -1 || rightHeight == -1) return -1;
+  if (Math.abs(leftHeight - rightHeight) > 1) return -1;
   return Math.max(leftHeight, rightHeight) + 1;
-}
+};
 
-function isBalanced(root) {
-  if (root === null) {
-    return true;
-  }
-  const leftHeight = getHeight(root.left);
-  const rightHeight = getHeight(root.right);
-  const heightDiff = Math.abs(leftHeight - rightHeight);
-  if (heightDiff > 1) {
-    return false;
-  }
-  return isBalanced(root.left) && isBalanced(root.right);
-}
-// Usage example:
+var isBalanced = function (root) {
+  if (root == null) return true;
+  if (getHeight(root) == -1) return false;
+  return true;
+};
 const tree = new TreeNode(1);
 tree.left = new TreeNode(2);
 tree.right = new TreeNode(3);

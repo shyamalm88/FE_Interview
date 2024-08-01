@@ -2,9 +2,7 @@ const bestTimeToBuySellStock = (arr) => {
   let max = 0;
   let smallest = arr[0];
   for (let i = 1; i < arr.length; i++) {
-    if (smallest > arr[i]) {
-      smallest = arr[i];
-    }
+    smallest = Math.min(smallest, arr[i]);
     max = Math.max(max, arr[i] - smallest);
   }
   return max;

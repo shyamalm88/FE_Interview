@@ -16,3 +16,12 @@ const rotateImage = (matrix) => {
   console.log(matrix);
   return matrix;
 };
+
+let matrix = [
+  [1, 5, 45, 80, 81],
+  [6, 7, 48, 82, 83],
+  [20, 22, 49, 85, 86],
+  [21, 23, 50, 90, 92],
+];
+
+rotateImage(matrix);

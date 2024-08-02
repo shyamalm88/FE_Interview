@@ -13,8 +13,7 @@ const trappingRainWater = (arr) => {
       } else {
         // store the water
         result += leftMax - arr[left];
-      }
-      //move left to next
+      } //move left to next
       left++;
     } else {
       //checking with previous right building height, if its greater then update rightMax or store water

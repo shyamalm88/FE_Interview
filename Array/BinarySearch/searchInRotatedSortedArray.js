@@ -5,14 +5,14 @@ const searchInRotatedSortedArray = (arr, target) => {
     const mid = Math.floor((start + end) / 2);
     if (arr[mid] === target) {
       return mid;
-    } else if (arr[mid] > arr[end]) {
-      if (arr[start] <= target && target < arr[mid]) {
+    } else if (arr[start] <= arr[mid]) {
+      if (arr[start] <= target && target <= arr[mid]) {
         end = mid - 1;
       } else {
         start = mid + 1;
       }
     } else {
-      if (arr[mid] < target && target <= arr[end]) {
+      if (arr[mid] <= target && target <= arr[end]) {
         start = mid + 1;
       } else {
         end = mid - 1;

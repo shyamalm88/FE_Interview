@@ -12,7 +12,6 @@ const print = (arr, stack, index, n, ans) => {
     return;
   }
   stack.push(arr[index]);
-
   print(arr, stack, index + 1, n, ans);
   stack.pop();
   print(arr, stack, index + 1, n, ans);

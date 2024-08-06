@@ -11,6 +11,7 @@ const util = (index, prevIndex, arr, n) => {
   if (prevIndex == -1 || arr[index] > arr[prevIndex]) {
     length = Math.max(length, 1 + util(index + 1, index, arr, n));
   }
+  console.log(index);
   return length;
 };
 

@@ -2,7 +2,8 @@ const Singleton = (function () {
   let instance;
 
   function createInstance() {
-    (this.name = "Singleton"), (this.random = Math.random());
+    this.name = "Singleton";
+    this.random = Math.random();
     return { name: this.name, random: this.random };
   }
 

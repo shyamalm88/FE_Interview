@@ -1,17 +1,15 @@
-const lowerBound = (arr, target) => {
-  let ans = arr.length;
+const lowerBound = (nums, x) => {
   let left = 0;
-  let right = arr.length - 1;
+  let right = nums.length;
   while (left < right) {
     let mid = Math.floor((left + right) / 2);
-    if (arr[mid] >= target) {
-      ans = mid;
-      right = mid - 1;
+    if (nums[mid] >= x) {
+      right = mid;
     } else {
       left = mid + 1;
     }
   }
-  return ans;
+  return left;
 };
 
 console.log(lowerBound([1, 2, 3, 4, 5, 6, 7, 8, 10, 10], 9));

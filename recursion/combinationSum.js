@@ -5,16 +5,16 @@ const combinationSum = (arr, target) => {
   return res;
 };
 
-const dfs = (arr, index, current, res, target) => {
+const dfs = (arr, index, stack, res, target) => {
   if (target == 0) {
-    res.push([...current]);
+    res.push([...stack]);
     return;
   }
   for (let i = index; i < arr.length; i++) {
     if (arr[i] <= target) {
-      current.push(arr[i]);
-      dfs(arr, i, current, res, target - arr[i]);
-      current.pop();
+      stack.push(arr[i]);
+      dfs(arr, i, stack, res, target - arr[i]);
+      stack.pop();
     }
   }
 };

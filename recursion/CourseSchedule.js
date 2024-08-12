@@ -18,6 +18,7 @@ var canFinish = function (numCourses, prerequisites) {
       edges[prev][post] = 1;
     }
   }
+  console.log(edges);
 
   for (var j = 0; j < numCourses; j++) {
     if (incoming[j] === 0) queue.push(j);
@@ -33,3 +34,5 @@ var canFinish = function (numCourses, prerequisites) {
 
   return count === numCourses;
 };
+
+canFinish(2, [[1, 0]]);

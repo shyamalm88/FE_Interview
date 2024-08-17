@@ -1,4 +1,4 @@
-const spiralMatrix = (matrix) => {
+let spiralOrder = (matrix) => {
   let n = matrix.length;
   let m = matrix[0].length;
   let res = [];
@@ -29,12 +29,3 @@ const spiralMatrix = (matrix) => {
   }
   return res;
 };
-
-console.log(
-  spiralMatrix([
-    [
-      [1, 2, 3, 4],
-      [5, 6, 7, 8],
-    ],
-  ])
-);

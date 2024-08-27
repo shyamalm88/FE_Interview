@@ -1,9 +1,8 @@
 const myPromiseAllSettled = (promises) => {
   let res = [];
-  let counter = 0;
   return new Promise((resolve, reject) => {
     promises.forEach((element, i) => {
-      Promise.resolve(element)
+      element
         .then((resp) => {
           res[i] = { status: "fulfilled", value: resp };
         })
@@ -11,8 +10,7 @@ const myPromiseAllSettled = (promises) => {
           res[i] = { status: "rejected", value: err };
         })
         .finally(() => {
-          counter++;
-          if (counter === promises.length - 1) {
+          if (i === promises.length - 1) {
             resolve(res);
           }
         });

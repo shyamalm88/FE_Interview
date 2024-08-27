@@ -1,35 +1,22 @@
-const PubSub = (function () {
-  const events = {};
+const PubSub = function () {
+  this.events = {};
+};
 
-  function subscribe(event, callback) {
-    if (!events[event]) {
-      events[event] = [];
-    }
-    events[event].push(callback);
+PubSub.prototype.subscribe = function (event, callback) {
+  if (!this.events[event]) {
+    this.events[event] = [];
   }
 
-  function publish(event, data) {
-    if (events[event]) {
-      events[event].forEach((callback) => {
-        callback(data);
-      });
-    }
-  }
+  this.events[event].push(callback);
+};
 
-  function unsubscribe(event, callback) {
-    if (events[event]) {
-      events[event] = events[event].filter(
-        (subscriber) => subscriber !== callback
-      );
-    }
-  }
+PubSub.prototype.unsubscribe = function (event, callback) {
+  this.events[event].filter((item) => item != callback);
+};
 
-  return {
-    subscribe,
-    publish,
-    unsubscribe,
-  };
-})();
+PubSub.prototype.publish = function (event, data) {
+  this.events[event].forEach((item) => item(data));
+};
 
 function handleEvent1(data) {
   console.log("Subscriber 1 received:", data);
@@ -40,16 +27,17 @@ function handleEvent2(data) {
   console.log("Subscriber 2 received:", data);
 }
 
+const pubSub = new PubSub();
 // Subscribe to events
-PubSub.subscribe("event1", handleEvent1);
-PubSub.subscribe("event2", handleEvent2);
+pubSub.subscribe("event1", handleEvent1);
+pubSub.subscribe("event2", handleEvent2);
 
 // Publish events
-PubSub.publish("event1", "Data for event1");
-PubSub.publish("event2", "Data for event2");
+pubSub.publish("event1", "Data for event1");
+pubSub.publish("event2", "Data for event2");
 
 // Unsubscribe from events
-PubSub.unsubscribe("event1", handleEvent1);
+pubSub.unsubscribe("event1", handleEvent1);
 
 // After unsubscribing, this won't trigger handleEvent1
-PubSub.publish("event1", "Data for event1 after unsubscribe");
+pubSub.publish("event1", "Data for event1 after unsubscribe");

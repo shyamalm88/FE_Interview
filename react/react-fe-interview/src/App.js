@@ -20,12 +20,12 @@ function App() {
       {/* <CounterWithUseReducer /> */}
       {/* <br /> */}
       {/* <TreeView data={data} /> */}
-      {/* <Products /> */}
+      <Products />
       {/* <DebounceProductsSearch /> */}
       {/* <Provider store={store}>
         <TodoWithRedux />
       </Provider> */}
-      <Stopwatch />
+      {/* <Stopwatch /> */}
     </div>
   );
 }

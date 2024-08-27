@@ -13,6 +13,6 @@ Array.prototype.myReduce = function (callback, initialValue, context) {
 const arr = [1, 2, 3, 4];
 const reducedArr = arr.myReduce((acc, item) => {
   return acc + item;
-});
+}, 0);
 
 console.log(reducedArr);

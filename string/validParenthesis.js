@@ -15,16 +15,19 @@ const validParenthesis = (str) => {
         if (pick === "{" || pick === "[") {
           return false;
         }
+        break;
       case "}":
         pick = stack.pop();
         if (pick === "(" || pick === "[") {
           return false;
         }
+        break;
       case "]":
         pick = stack.pop();
         if (pick === "(" || pick === "{") {
           return false;
         }
+        break;
     }
   }
   return stack.length === 0 ? true : false;

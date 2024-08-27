@@ -7,14 +7,14 @@ const Singleton = (function () {
     return { name: this.name, random: this.random };
   }
 
-  return {
-    getInstance: function () {
-      if (!instance) {
-        instance = createInstance();
-      }
-      return instance;
-    },
+  let getInstance = function () {
+    if (!instance) {
+      instance = createInstance();
+    }
+    return instance;
   };
+
+  return { getInstance };
 })();
 
 const object1 = Singleton.getInstance();
